@@ -10,12 +10,11 @@ public:
     Vector(): elem{new double[0]}, sz{0} {
     };
 
-    explicit Vector(const int s): elem{new double[s]}, sz{s} {
-    };
+    explicit Vector(int s);
 
     [[nodiscard]] int size() const;
 
-    double& operator[](int idx) const;
+    double &operator[](int idx) const;
 
 private:
     double *elem;
