@@ -15,7 +15,7 @@ public:
 
     [[nodiscard]] int size() const;
 
-    double operator[](int idx) const;
+    double& operator[](int idx) const;
 
 private:
     double *elem;

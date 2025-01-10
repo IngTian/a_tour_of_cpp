@@ -8,7 +8,7 @@ int Vector::size() const {
     return this->sz;
 }
 
-double Vector::operator[](const int idx) const {
+double& Vector::operator[](const int idx) const {
     return this->elem[idx];
 }
 
