@@ -18,6 +18,14 @@ public:
 
     double &operator[](int idx) const;
 
+    Vector &operator+=(const Vector &v);
+
+    Vector &operator-=(const Vector &v);
+
+    double operator*=(const Vector &v) const;
+
+    Vector &operator*=(double d);
+
 private:
     double *elem;
     int sz;
