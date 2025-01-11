@@ -5,18 +5,20 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 #include <initializer_list>
+#include <memory>
+
 #include "container.h"
 
 class Vector final : public Container {
 public:
-    Vector(): elem{new double[0]}, sz{0} {
+    Vector(): elem{std::make_unique<double[]>(0)}, sz{0} {
     };
 
     Vector(const std::initializer_list<double> &list);
 
     explicit Vector(int s);
 
-    ~Vector() override;
+    ~Vector() override = default;
 
     [[nodiscard]] size_t size() const override;
 
@@ -31,7 +33,7 @@ public:
     Vector &operator*=(double d);
 
 private:
-    double *elem;
+    std::unique_ptr<double[]> elem;
     size_t sz;
 };
 

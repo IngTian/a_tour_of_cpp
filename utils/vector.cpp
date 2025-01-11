@@ -13,18 +13,20 @@ Vector::Vector(const int s) {
     }
 
     this->sz = s;
-    this->elem = new double[s];
+    this->elem = std::make_unique<double[]>(s);
     for (int i = 0; i < s; ++i) {
         this->elem[i] = 0;
     }
 }
 
-Vector::Vector(const std::initializer_list<double> &list): elem{new double[list.size()]}, sz{list.size()} {
-    std::ranges::copy(list, this->elem);
-}
-
-Vector::~Vector() {
-    delete[] this->elem;
+Vector::Vector(
+    const std::initializer_list<double> &list
+): elem{std::make_unique<double[]>(list.size())}, sz{list.size()} {
+    int i = 0;
+    for (const auto item: list) {
+        this->elem[i] = item;
+        ++i;
+    }
 }
 
 size_t Vector::size() const {
