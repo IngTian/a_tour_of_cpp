@@ -12,6 +12,8 @@ public:
 
     explicit Vector(int s);
 
+    ~Vector();
+
     [[nodiscard]] int size() const;
 
     double &operator[](int idx) const;

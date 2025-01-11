@@ -15,6 +15,10 @@ Vector::Vector(const int s) {
     this->elem = new double[s];
 }
 
+Vector::~Vector() {
+    delete[] this->elem;
+}
+
 
 int Vector::size() const {
     return this->sz;
