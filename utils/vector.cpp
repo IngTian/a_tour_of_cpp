@@ -13,6 +13,9 @@ Vector::Vector(const int s) {
 
     this->sz = s;
     this->elem = new double[s];
+    for (int i = 0; i < s; ++i) {
+        this->elem[i] = 0;
+    }
 }
 
 Vector::~Vector() {
