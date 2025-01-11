@@ -4,17 +4,20 @@
 
 #ifndef VECTOR_H
 #define VECTOR_H
+#include <initializer_list>
 
 class Vector {
 public:
     Vector(): elem{new double[0]}, sz{0} {
     };
 
+    Vector(const std::initializer_list<double> &list);
+
     explicit Vector(int s);
 
     ~Vector();
 
-    [[nodiscard]] int size() const;
+    [[nodiscard]] size_t size() const;
 
     double &operator[](int idx) const;
 
@@ -28,7 +31,7 @@ public:
 
 private:
     double *elem;
-    int sz;
+    size_t sz;
 };
 
 #endif //VECTOR_H

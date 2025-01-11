@@ -4,6 +4,7 @@
 
 #include "vector.h"
 
+#include <algorithm>
 #include <stdexcept>
 
 Vector::Vector(const int s) {
@@ -18,12 +19,15 @@ Vector::Vector(const int s) {
     }
 }
 
+Vector::Vector(const std::initializer_list<double> &list): elem{new double[list.size()]}, sz{list.size()} {
+    std::ranges::copy(list, this->elem);
+}
+
 Vector::~Vector() {
     delete[] this->elem;
 }
 
-
-int Vector::size() const {
+size_t Vector::size() const {
     return this->sz;
 }
 
