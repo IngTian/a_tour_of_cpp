@@ -5,8 +5,9 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 #include <initializer_list>
+#include "./container.h"
 
-class Vector {
+class Vector final : Container {
 public:
     Vector(): elem{new double[0]}, sz{0} {
     };
@@ -15,11 +16,11 @@ public:
 
     explicit Vector(int s);
 
-    ~Vector();
+    ~Vector() override;
 
-    [[nodiscard]] size_t size() const;
+    [[nodiscard]] size_t size() const override;
 
-    double &operator[](int idx) const;
+    double &operator[](int idx) const override;
 
     Vector &operator+=(const Vector &v);
 
