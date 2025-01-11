@@ -5,9 +5,9 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 #include <initializer_list>
-#include "./container.h"
+#include "container.h"
 
-class Vector final : Container {
+class Vector final : public Container {
 public:
     Vector(): elem{new double[0]}, sz{0} {
     };
