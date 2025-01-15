@@ -16,11 +16,19 @@ public:
 
     Vector(const std::initializer_list<double> &list);
 
-    explicit Vector(int s);
+    explicit Vector(size_t s);
+
+    Vector(const Vector &v);
+
+    Vector(Vector &&v) noexcept;
 
     ~Vector() override = default;
 
     [[nodiscard]] size_t size() const override;
+
+    Vector &operator=(const Vector &v);
+
+    Vector &operator=(Vector &&v) noexcept;
 
     double &operator[](int idx) const override;
 

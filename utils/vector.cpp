@@ -7,11 +7,7 @@
 #include <algorithm>
 #include <stdexcept>
 
-Vector::Vector(const int s) {
-    if (s < 0) {
-        throw std::length_error("Vector length cannot be negative.");
-    }
-
+Vector::Vector(const size_t s) {
     this->sz = s;
     this->elem = std::make_unique<double[]>(s);
     for (int i = 0; i < s; ++i) {
@@ -29,8 +25,34 @@ Vector::Vector(
     }
 }
 
+Vector::Vector(const Vector &v): Vector(v.size()) {
+    for (int i = 0; i < v.size(); ++i) {
+        this->elem[i] = v.elem[i];
+    }
+}
+
+Vector::Vector(Vector &&v) noexcept: elem{std::move(v.elem)}, sz{v.size()} {
+    v.sz = 0;
+}
+
 size_t Vector::size() const {
     return this->sz;
+}
+
+Vector &Vector::operator=(const Vector &v) {
+    auto new_elems = std::make_unique<double[]>(v.size());
+    this->sz = v.sz;
+    for (int i = 0; i < v.size(); ++i) {
+        new_elems[i] = v.elem[i];
+    }
+    this->elem = std::move(new_elems);
+    return *this;
+}
+
+Vector &Vector::operator=(Vector &&v) noexcept {
+    this->sz = v.sz;
+    this->elem = std::move(v.elem);
+    return *this;
 }
 
 double &Vector::operator[](const int idx) const {
