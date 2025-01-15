@@ -33,8 +33,8 @@ public:
     Vector &operator*=(double d);
 
 private:
-    std::unique_ptr<double[]> elem;
-    size_t sz;
+    std::unique_ptr<double[]> elem = std::make_unique<double[]>(0);
+    size_t sz = 0;
 };
 
 #endif //VECTOR_H
