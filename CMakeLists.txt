@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.20)
 project(a_tour_of_cpp)
 
 # Set the C++ standard to C++20.
