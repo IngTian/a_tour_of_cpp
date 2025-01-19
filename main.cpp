@@ -4,9 +4,9 @@
 using namespace std;
 
 int main() {
-    const auto v = make_unique<Vector>(100);
+    const auto v = make_unique<Vector<double> >(100);
 
-    const Vector a{1, 2, 3, 4, 5};
+    const Vector<double> a{1, 2, 3, 4, 5};
     for (int i = 0; i < a.size(); ++i) {
         std::cout << a[i] << std::endl;
     }
