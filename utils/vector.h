@@ -45,6 +45,14 @@ public:
         return this->sz;
     };
 
+    T *begin() const {
+        return &this->elem[0];
+    }
+
+    T *end() const {
+        return this->begin() + this->size();
+    }
+
     Vector &operator=(const Vector &v) {
         auto new_elems = std::make_unique<T>(v.size());
         this->sz = v.size();

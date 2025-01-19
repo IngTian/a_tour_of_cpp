@@ -7,8 +7,8 @@ int main() {
     const auto v = make_unique<Vector<double> >(100);
 
     const Vector<double> a{1, 2, 3, 4, 5};
-    for (int i = 0; i < a.size(); ++i) {
-        std::cout << a[i] << std::endl;
+    for (auto elem: a) {
+        std::cout << elem << std::endl;
     }
 
     try {
