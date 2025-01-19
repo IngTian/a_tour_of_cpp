@@ -5,11 +5,10 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 #include <initializer_list>
-#include <memory>
 
 #include "container.h"
 
-template<typename T>
+template<std::copyable T>
 class Vector final : public Container<T> {
 public:
     Vector(): elem{std::make_unique<T[]>(0)}, sz{0} {
